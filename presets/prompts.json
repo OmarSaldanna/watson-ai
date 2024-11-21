@@ -1,0 +1,7 @@
+{
+    "-f": "fast",
+    "-p": "partial",
+    "-F": "full",
+    "-c": "hamilton",
+    "-t": "terminal"
+}

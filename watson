@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# main path to locate the project
+MAIN="/Users/omarsaldanna/watson-ai"
+
+# check if the current file was given
+if [ -z "$1" ]; then
+    echo "Error: missing current file to start"
+    exit 1
+fi
+
+# check if the file exists
+if [ ! -f "$(pwd)/$1" ]; then
+    echo "Error: file $(pwd)/$1 not found"
+    exit 1
+fi
+
+# colors
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+BOLD='\033[1m'
+
+# clear sceen
+clear
+
+# typing text funcion
+type_text() {
+    text=$1
+    delay=${2:-0.05}
+    for ((i=0; i<${#text}; i++)); do
+        echo -n "${text:$i:1}"
+        sleep $delay
+    done
+    echo
+}
+
+# Arte ASCII para "Hamilton AI"
+echo -e "
+${CYAN}██╗    ██╗${GREEN} █████╗${PURPLE} ████████╗${BLUE}███████╗${YELLOW}███████╗${RED}███╗   ██╗${NC}
+${CYAN}██║    ██║${GREEN}██╔══██╗${PURPLE}╚══██╔══╝${BLUE}██╔════╝${YELLOW}██╔══██║${RED}████╗  ██║${NC}
+${CYAN}██║ █╗ ██║${GREEN}███████║${PURPLE}   ██║   ${BLUE}███████╗${YELLOW}██║  ██║${RED}██╔██╗ ██║${NC}
+${CYAN}██║███╗██║${GREEN}██╔══██║${PURPLE}   ██║   ${BLUE}╚════██║${YELLOW}██║  ██║${RED}██║╚██╗██║${NC}
+${CYAN}╚███╔███╔╝${GREEN}██║  ██║${PURPLE}   ██║   ${BLUE}███████║${YELLOW}███████║${RED}██║ ╚████║${NC}
+${CYAN} ╚══╝╚══╝ ${GREEN}╚═╝  ╚═╝${PURPLE}   ╚═╝   ${BLUE}╚══════╝${YELLOW}╚══════╝${RED}╚═╝  ╚═══╝${NC}"
+
+# a little delay
+sleep 0.3
+
+# ascii art
+echo -e "
+${YELLOW}╔═══════════════════════════════════════════════════╗${NC}
+${YELLOW}║${NC} ${CYAN}while${NC} (${GREEN}moon${NC}.${PURPLE}distance${NC} < ${BLUE}Infinity${NC}) {                ${YELLOW}║${NC}
+${YELLOW}║${NC}    ${RED}console${NC}.${GREEN}log${NC}(${CYAN}'TO THE MOON!'${NC});                   ${YELLOW}║${NC}
+${YELLOW}║${NC}    ${PURPLE}hamilton${NC}.${BLUE}launch${NC}(${GREEN}🚀${NC});                           ${YELLOW}║${NC}
+${YELLOW}║${NC}    ${CYAN}await${NC} ${GREEN}Promise${NC}.${BLUE}resolve${NC}(${PURPLE}'success'${NC});              ${YELLOW}║${NC}
+${YELLOW}║${NC} }                                                 ${YELLOW}║${NC}
+${YELLOW}╚═══════════════════════════════════════════════════╝${NC}"
+
+# simulated messages
+# echo -ne "\n${GREEN}System status: ${NC}"
+# for char in I n i t i a l i z i n g " " H a m i l t o n " " A I " " p r o t o c o l s "." "." "." " "; do
+#     echo -n "$char"
+#     sleep 0.03
+# done
+
+# # simulated messages
+# echo -ne "\n${CYAN}Status: ${NC}"
+# for char in W A I T I N G " " O R D E R S " " "🚀"; do
+#     echo -n "$char"
+#     sleep 0.03
+# done
+
+echo
+echo
+
+# start the listener
+source $MAIN/venv/bin/activate
+source $MAIN/global.conf
+source $MAIN/.keys
+python3 $MAIN/main.py $(pwd)/$1

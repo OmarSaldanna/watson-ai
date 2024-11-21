@@ -1,0 +1,10 @@
+# python stuff
+venv/
+__pycache__/
+
+# Ignore Mac system files
+*.DS_Store
+*.cfg
+
+# the key file
+.keys
