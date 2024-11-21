@@ -36,7 +36,7 @@ class FILE:
   def get_prompt (self):
     prompt = ""
     delimiter = ""
-    self.file_content = ""
+    self.content = ""
     # open the current file
     with open(self.file_path, 'r') as file:
       # iterate the lines
@@ -50,7 +50,7 @@ class FILE:
           prompt += line.strip()[2:] + " "
         # is the rest of the file
         else:
-          self.file_content += line
+          self.content += line
     # return the query
     return delimiter, prompt.strip()
 
