@@ -8,3 +8,7 @@ __pycache__/
 
 # the key file
 .keys
+
+# testing file
+test.py
+test.js
