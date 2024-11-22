@@ -4,7 +4,7 @@ from models import gpt, claude
 import random
 
 
-# fast does not consider nothing for the prompt
+# partial considers the content of the file
 def main (params):
 	# get the prams
 	prompt, _, info, current_file = params
@@ -20,9 +20,6 @@ def main (params):
 	# the system message
 	system = info['system'] + " Considering the file, answer ONLY with an independant new code to complete the given code with the request."
 	# use the model
-	print(new_prompt)
-	print(system)
 	response = llm.chat(new_prompt, model, system, info['max-tokens-coef'])
-	print(response)
 	# and return
 	return response['code']

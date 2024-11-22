@@ -78,6 +78,9 @@ ${YELLOW}╚══════════════════════�
 echo
 echo
 
+# current path where it is running
+export CURRENT="$(pwd)"
+
 # start the listener
 source $MAIN/venv/bin/activate
 source $MAIN/global.conf

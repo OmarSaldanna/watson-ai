@@ -21,20 +21,20 @@ class AI:
 		if prompt == '':
 			print(">> No prompt to process, skipping")
 			return
-		try:
-			# based on delimiter use the function
-			function = self.delimiters[delimiter]
-			# form the params to pass them to the function
-			params = (prompt, self.state, self.models, self.current_file)
-			# get the function
-			function = importlib.import_module(f"functions.{function}")
-			# get an answer
-			answer = function.main(params)
-			# if there was an answer then write it
-			if answer:
-				self.current_file.post_answer(answer)
-			# else 
-			else:
-				print("promt executed, no answer receipt")
-		except:
-			os.system('osascript -e \'display notification "Error in watson prompt" with title "Watson"\'')
+		# try:
+		# based on delimiter use the function
+		function = self.delimiters[delimiter]
+		# form the params to pass them to the function
+		params = (prompt, self.state, self.models, self.current_file)
+		# get the function
+		function = importlib.import_module(f"functions.{function}")
+		# get an answer
+		answer = function.main(params)
+		# if there was an answer then write it
+		if answer:
+			self.current_file.post_answer(answer)
+		# else 
+		else:
+			print("promt executed, no answer receipt")
+		# except:
+		# 	os.system('osascript -e \'display notification "Error in watson prompt" with title "Watson"\'')
