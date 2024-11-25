@@ -89,10 +89,10 @@ class FILE:
               temp_file.write("\n")
             # the last line
             temp_file.write("\n")
+            # the other flag
+            already_posted_answer = True
             # and continue with the rest of the file
             continue
-            # and the other flag
-            already_posted_answer = True
           # write the line
           temp_file.write(line_to_write)
         # in case of last line prompts
@@ -101,6 +101,7 @@ class FILE:
         # finally convert the current file into the temp file
         print(f">>> Writing file {self.file_path}\n")
         os.system(f"mv \"{self.file_path + os.environ['TMP_EXT']}\" \"{self.file_path}\"")
+
 
 # class to handle json files
 class JFILE:
