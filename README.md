@@ -1,4 +1,4 @@
-
+https://platform.openai.com/tokenizer
 # 
 
 # give permisions to the terminal to monitor the keybaord

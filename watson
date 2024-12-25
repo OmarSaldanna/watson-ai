@@ -1,19 +1,7 @@
 #!/bin/bash
 
-# main path to locate the project
+# main path to locate the project code
 MAIN="/Users/omarsaldanna/watson-ai"
-
-# check if the current file was given
-if [ -z "$1" ]; then
-    echo "Error: missing current file to start"
-    exit 1
-fi
-
-# check if the file exists
-if [ ! -f "$(pwd)/$1" ]; then
-    echo "Error: file $(pwd)/$1 not found"
-    exit 1
-fi
 
 # colors
 CYAN='\033[0;36m'
@@ -85,4 +73,4 @@ export CURRENT="$(pwd)"
 source $MAIN/venv/bin/activate
 source $MAIN/global.conf
 source $MAIN/.keys
-python3 $MAIN/main.py $(pwd)/$1
+python3 $MAIN/main.py $(pwd)/

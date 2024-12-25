@@ -4,17 +4,17 @@ import os
 
 class AI:
 
-	def  __init__ (self, current_file):
+	def  __init__ (self):
 		# instance the state file
 		self.state = JFILE(os.environ["MAIN"] + "/presets/state.json")
 		# the prompt delimiters
 		self.delimiters = JFILE(os.environ["MAIN"] + "/presets/prompts.json")
 		# and the models info
 		self.models = JFILE(os.environ["MAIN"] + "/presets/models.json")
+
+	def __call__ (self, current_file):
 		# instance the current file
 		self.current_file = FILE(current_file, self.delimiters.dic.keys())
-
-	def __call__ (self):
 		# get the prompt
 		delimiter, prompt = self.current_file.get_prompt()
 		# check if there's prompt:
