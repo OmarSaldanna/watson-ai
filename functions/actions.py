@@ -14,37 +14,20 @@ def main (params):
 	answer = ""
 	# remove spaces from prompt
 	prompt = prompt.strip()
-
-	##################### change current file ######################
-
-	if prompt.startswith("mv"):
-		# get the current file from the prompt
-		new_file = current_path + prompt.split(" ")[1]
-		# check if exists
-		try:
-			read_file(new_file)
-		except:
-			return f"file {new_file} not found"
-		# if exists, change the file
-		current_file.file_path = new_file
-		# also save the new comments
-		try:
-			current_file.comment = comments['.' + new_file.split('.')[-1]]
-		except:
-			current_file.comment = comments["default"]
-		# also return the answer
-		answer = "Waiting orders"
+	# based on current file, get the current dir
+	last_slash_idx = len(current_file.file_path) - current_file.file_path[::-1].index('/')
+	current_dir = current_file.file_path[:last_slash_idx]
 
 	##################### add files ######################
 
-	elif prompt.startswith("add"):
-		answer = "Read: "
+	if prompt.startswith("add"):
+		answer = "Added: "
 		# catch the files
 		files = prompt.split(" ")[1:]
 		# for every file given
 		for f in files:
 			# add the current path to the file
-			file = current_path + f
+			file = current_dir + f
 			# try to read the file
 			try:
 				# save it on state
@@ -52,7 +35,27 @@ def main (params):
 				# save the file as well read
 				answer += f + " "
 			except:
-				pass
+				continue
+		# finally write state
+		state.write()
+
+	##################### remove files ######################
+
+	elif prompt.startswith("rm"):
+		answer = "Removed: "
+		# catch the files
+		files = prompt.split(" ")[1:]
+		# for every file given
+		for f in files:
+			file = current_dir + f
+			# try to remove the file
+			try:
+				# save it on state
+				del(state.dic[file])
+				# save the file as well read
+				answer += f + " "
+			except:
+				continue
 		# finally write state
 		state.write()
 
@@ -65,7 +68,6 @@ def main (params):
 	##################### End ######################
 
 	return answer
-
 
 
 # function to read files

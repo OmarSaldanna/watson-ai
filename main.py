@@ -8,8 +8,11 @@ import time
 import sys
 import os
 
-# 
-COOLDOWN_SECONDS = int(os.environ["COOLDOWN"])
+# cooldown to delay changes detection
+cooldown = int(os.environ["COOLDOWN"])
+
+# load the excluded directirues
+excluded_dirs = os.environ["EXCLUDED"].split(' ')
 
 # start the AI with the current file
 ai = AI()
@@ -20,11 +23,12 @@ class ChangeHandler(FileSystemEventHandler):
     # when a file is modified
     def on_modified(self, event):
         if not event.is_directory:
-            # an alert
-            print(f"\n>> Detected change on {event.src_path}")
-            # and the AI
-            ai(event.src_path)
-
+            # check that the file isn't in an excluded dir
+            if True not in [d in event.src_path for d in excluded_dirs]:
+                # an alert
+                print(f"\n>> Detected change on {event.src_path}")
+                # and the AI
+                ai(event.src_path)
 
 # function to start the listener
 def monitor_directory(path):
@@ -36,7 +40,7 @@ def monitor_directory(path):
     observer.start()
     try:
         while True:
-            time.sleep(COOLDOWN_SECONDS)
+            time.sleep(cooldown)
     except KeyboardInterrupt:
         observer.stop()
         print("\nWatson AI stopped.")
