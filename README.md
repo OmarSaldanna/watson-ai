@@ -19,5 +19,5 @@ ln watson ~/bin/watson
 
 
 # About LLMs
-https://www.anthropic.com/pricing#anthropic-api
-https://openai.com/api/pricing/
+https://platform.openai.com/docs/models#current-model-aliases
+https://docs.anthropic.com/en/docs/about-claude/models

@@ -1,21 +1,14 @@
-# import the models
-from models import gpt, claude
-# to chose a model
-import random
+# import the model selector
+from modules.selector import select_model
 
 
 # fast does not consider nothing for the prompt
 def main (params):
 	# get the prams
 	prompt, _, info, _ = params
-	# this is arbitrary, I have more credits on OpenAI
-	available_models = [
-		(gpt, info['gpt']), (gpt, info['gpt']), (claude, info['claude'])
-	]
 	# randomly chose the model
-	llm, model = random.choice(available_models)
-	print("used:", model)
+	llm, model = select_model(info)
 	# use the model
-	response = llm.chat(prompt, model, info['system'], info['max-tokens-coef'])
+	response = llm.chat(prompt, model, info['system'], info['max-tokens'])
 	# and return
 	return response['code']

@@ -6,12 +6,12 @@ from anthropic import Anthropic
 client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 
-def chat (prompt, model, system, token_coef):
+def chat (prompt, model, system, tokens):
     try:
         # Make the API call
         message = client.messages.create(
             model=model,
-            max_tokens=1024 * int(token_coef),
+            max_tokens=int(tokens),
             temperature=0,
             system=system,
             messages=[
@@ -21,7 +21,6 @@ def chat (prompt, model, system, token_coef):
                 }
             ]
         )
-        
         # Parse the response as JSON
         try:
             response_json = json.loads(message.content[0].text)
@@ -33,6 +32,7 @@ def chat (prompt, model, system, token_coef):
             }
             
     except Exception as e:
+
         return { "error": str(e) }
 
 

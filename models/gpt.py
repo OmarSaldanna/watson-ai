@@ -4,36 +4,22 @@ from openai import OpenAI
 # instance this
 client = OpenAI()
 
-def chat (prompt, model, system, token_coef): 
+def chat (prompt, model, system, tokens): 
   # and use the LLM
   try:
     response = client.chat.completions.create(
       model=model,
       messages=[
         {
-          "role": "system",
-          "content": [
-            {
-              "text": system,
-              "type": "text"
-            }
-          ]
+          "role": "developer",
+          "content": system
         },
         {
           "role": "user",
-          "content": [
-            {
-              "text": prompt,
-              "type": "text"
-            }
-          ]
+          "content": prompt
         }
       ],
-      temperature=1,
-      max_tokens=1024 * int(token_coef),
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0,
+      max_tokens=int(tokens),
       response_format={
         "type": "json_object"
       }

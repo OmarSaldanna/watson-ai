@@ -1,10 +1,13 @@
 {
 	"system": "You are a code generation assistant. Always respond with valid JSON in the format: {\"code\": \"generated_code_here\"} Make sure the code is properly escaped for JSON. Be brief and fast in your answers.",
 	
-	"max-tokens-coef": 4,
+	"max-tokens": 2048,
 
-	"gpt": "gpt-4o-mini",
-	"claude": "claude-3-5-haiku-latest",
+	"models": {
+		"gpt-4o-mini": "gpt",
+		"claude-3-5-haiku-latest": "claude",
+		"claude-3-5-sonnet-latest": "claude"
+	},
 
-	"probs": ".75 .25"
+	"probs": ".70 .20 .10"
 }

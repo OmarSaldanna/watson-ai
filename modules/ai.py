@@ -19,7 +19,7 @@ class AI:
 		delimiter, prompt = self.current_file.get_prompt()
 		# check if there's prompt:
 		if prompt == '':
-			print(">> No prompt to process, skipping")
+			# print(">> No prompt to process, skipping")
 			return
 		# try:
 		# based on delimiter use the function
