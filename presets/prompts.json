@@ -3,6 +3,5 @@
     "-p": "partial",
     "-F": "full",
     "-a": "actions",
-    "-t": "terminal",
-    "-c": "command"
+    "-t": "terminal"
 }
