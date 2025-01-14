@@ -1,17 +1,24 @@
-# -f crea una fucnión de numpy para crear dos matrices simples 
-import numpy as np
+# import the model selector
+from modules.selector import select_model
 
-def crear_matrices():
-    matriz_a = np.array([[1, 2], [3, 4]])
-    matriz_b = np.array([[5, 6], [7, 8]])
-    return matriz_a, matriz_b
 
-# -p ahora crea una función para obtener los determinantes de las matrices y usa las funciones para crear dos matrices e imprimir sus determinantes 
-def obtener_determinantes():
-    matriz_a, matriz_b = crear_matrices()
-    det_a = np.linalg.det(matriz_a)
-    det_b = np.linalg.det(matriz_b)
-    print(f"Determinante de matriz A: {det_a}")
-    print(f"Determinante de matriz B: {det_b}")
-
-obtener_determinantes()
+# full considers the content of the file, and the added files
+def main (params):
+    # get the prams
+    prompt, state, info, current_file = params
+    # select the model
+    llm, model = select_model(info)
+    # include the file content in the prompt
+    new_prompt = f"Current file: [{current_file.file_path}]\n{current_file.content}\n[end of file]\n\n"
+    new_prompt += "Context files: "
+    # add the files
+    for key in state.dic.keys():
+        new_prompt += f"[{key}]\n" + state[key] + "\n[end of file]"
+    # and the prompt    
+    new_prompt += "\nPrompt: " + prompt
+    # the system message
+    system = info['system'] + " Considering current file and the context files, answer the prompt ONLY with an independant new code to complete the current file code."
+    # use the model
+    response = llm.chat(new_prompt, model, system, info['max-tokens'])
+    # and return
+    return response['code']
