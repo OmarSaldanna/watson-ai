@@ -59,6 +59,15 @@ def main (params):
 		# finally write state
 		state.write()
 
+	##################### clear files ######################
+
+	elif prompt.startswith("clear"):
+		answer = "State clear"
+		# clear the state
+		state.dic = {}
+		# finally save changes
+		state.write()
+
 	##################### list files ######################
 
 	elif prompt.startswith("ls"):
