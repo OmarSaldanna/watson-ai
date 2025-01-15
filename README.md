@@ -40,7 +40,7 @@ print(data.head())
 
 # Drop all rows with null values
 data_cleaned = data.dropna()
-
+```
 
 ## Complete `lines needed` `-p`
 
@@ -57,6 +57,7 @@ print(ds.shape)
 ds.head()
 
 # -p drop all the rows with null values ```
+```
 
 ## Code with `more files` `-F`
 
