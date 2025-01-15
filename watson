@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # main path to locate the project code
-export MAIN="/Users/omarsaldanna/watson-ai"
+export MAIN="your path here"
 
 # colors
 CYAN='\033[0;36m'
@@ -27,7 +27,6 @@ type_text() {
     echo
 }
 
-# Arte ASCII para "Hamilton AI"
 echo -e "
 ${CYAN}██╗    ██╗${GREEN} █████╗${PURPLE} ████████╗${BLUE}███████╗${YELLOW}███████╗${RED}███╗   ██╗${NC}
 ${CYAN}██║    ██║${GREEN}██╔══██╗${PURPLE}╚══██╔══╝${BLUE}██╔════╝${YELLOW}██╔══██║${RED}████╗  ██║${NC}
@@ -44,7 +43,7 @@ echo -e "
 ${YELLOW}╔═══════════════════════════════════════════════════╗${NC}
 ${YELLOW}║${NC} ${CYAN}while${NC} (${GREEN}moon${NC}.${PURPLE}distance${NC} < ${BLUE}Infinity${NC}) {                ${YELLOW}║${NC}
 ${YELLOW}║${NC}    ${RED}console${NC}.${GREEN}log${NC}(${CYAN}'TO THE MOON!'${NC});                   ${YELLOW}║${NC}
-${YELLOW}║${NC}    ${PURPLE}hamilton${NC}.${BLUE}launch${NC}(${GREEN}🚀${NC});                           ${YELLOW}║${NC}
+${YELLOW}║${NC}    ${PURPLE}watson${NC}.${BLUE}launch${NC}(${GREEN}🚀${NC});                           ${YELLOW}║${NC}
 ${YELLOW}║${NC}    ${CYAN}await${NC} ${GREEN}Promise${NC}.${BLUE}resolve${NC}(${PURPLE}'success'${NC});              ${YELLOW}║${NC}
 ${YELLOW}║${NC} }                                                 ${YELLOW}║${NC}
 ${YELLOW}╚═══════════════════════════════════════════════════╝${NC}"
