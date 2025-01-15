@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # main path to locate the project code
-export MAIN="here your path..."
+export MAIN="/Users/omarsaldanna/watson-ai"
 
 # colors
 CYAN='\033[0;36m'
